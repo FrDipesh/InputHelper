@@ -66,14 +66,14 @@ public class InputHelper {
     }
 
     //The getDouble method returns a valid double value back to the user
-    public static int getDouble(Scanner scan,  String prompt) {
+    public static double getDouble(Scanner scan, String prompt) {
         boolean valid = false;
         double userInput = 0;
 
         System.out.println(prompt);
         do {
-            if (scan.hasNextInt()) {
-                userInput = scan.nextInt();
+            if (scan.hasNextDouble()) {
+                userInput = scan.nextDouble();
                 valid = true;
             }
             else{
@@ -81,9 +81,54 @@ public class InputHelper {
                 scan.nextLine();
             }
         } while (!valid);
-        return (int) userInput;
+        return userInput;
     }
 
+    //The getRangedDouble method returns a valid int value back to the user between min and max
+    public static double getRangedDouble(Scanner scan, String prompt, double min, double max) {
+        boolean valid = false;
+        double userInput = 0;
+
+        System.out.println(prompt);
+        do {
+            if (scan.hasNextDouble()) {
+                userInput = scan.nextDouble();
+                if (userInput >= min && userInput <= max) {
+                    valid = true;
+                }
+                else{
+                    System.out.println("Error - input must be between " + min + " and " + max + ".");
+                    scan.nextLine();
+                }
+            }
+            else{
+                System.out.println("Error - must enter integer value");
+                scan.nextLine();
+            }
+        } while (!valid);
+        return userInput;
+    }
+
+    //The a value greater than 0
+    public static double getPositiveNonZeroInt(Scanner scan, String prompt) {
+        boolean valid = false;
+        int userInput = 0;
+
+        System.out.println(prompt);
+        do {
+            if (scan.hasNextInt()) {
+                userInput = scan.nextInt();
+                if (userInput > 0) {
+                    valid = true;
+                }
+            }
+            else{
+                System.out.println("Error - must enter integer value greater than 0");
+                scan.nextLine();
+            }
+        } while (!valid);
+        return userInput;
+    }
 }
 
 
