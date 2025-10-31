@@ -68,7 +68,7 @@ public class InputHelper {
     //The getDouble method returns a valid double value back to the user
     public static int getDouble(Scanner scan,  String prompt) {
         boolean valid = false;
-        double userInput = = 0;
+        double userInput = 0;
 
         System.out.println(prompt);
         do {
@@ -81,7 +81,7 @@ public class InputHelper {
                 scan.nextLine();
             }
         } while (!valid);
-        return userInput;
+        return (int) userInput;
     }
 
 }
