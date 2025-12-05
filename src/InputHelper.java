@@ -129,6 +129,26 @@ public class InputHelper {
         } while (!valid);
         return userInput;
     }
+
+    public static String getYNConfirm(Scanner scan, String prompt) {
+        boolean validYN = false;
+        String question= "";
+
+        System.out.println(prompt);
+        do {
+            if (scan.hasNextLine()) {
+                question = scan.nextLine();
+                if (question.equalsIgnoreCase("y")) {
+                    validYN = true;
+                } else if (question.equalsIgnoreCase("n")) {
+                    validYN = true;
+                } else {
+                    System.out.println("Invalid Please pick [Y] or [N]");
+                }
+            }
+        } while (!validYN);
+        return question;
+    }
 }
 
 
